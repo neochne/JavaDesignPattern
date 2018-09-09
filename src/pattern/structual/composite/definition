@@ -1,1 +1,13 @@
 组合（合成）模式
+概念：将对象组合成树形结构以表示部分-整体的层次结构。组合模式使得用户对单个对象和组合对象的使用具有一致性。
+
+-- code --
+
+        Leader leader = new Leader();
+        Worker dev = new Developer();
+        Worker product = new Productor();
+
+        leader.addWorker(dev);
+        leader.addWorker(product);
+
+        leader.work();

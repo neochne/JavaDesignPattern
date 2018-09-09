@@ -1,1 +1,47 @@
 访问者模式
+概念：封装一些施加于某种数据结构元素之上的操作，一旦这些操作需要修改的话，接受这个操作的数据结构则可以保持不变
+适用场景：需要对一个对象结构中的对象进行很多不同的并且不相关的操作，而需要避免让这些操作"污染"这些对象的类，使用访问者模式将这些封装到类中。
+
+-- 类型 --
+静态（明显）类型：变量声明时的类型
+动态（实际）类型：变量引用的对象的类型
+例：List<String> list = new ArrayList<>();，list 就为静态类型，而 ArrayList 为动态类型
+
+-- 分派 --
+根据对象类型而对方法进行的选择，叫做分派。分派又分为 静态分派 和 动态分派
+
+-- code --
+		//《静态分派》
+		// 虽然传入的是 cat 和 dog 是两个不同的实际类型，但是方法参数认的是静态类型，所以输出都是 “Animal eat”
+		// 静态分配在编译期就完成了，编译期也只能知道对象的静态类型
+//		Animal cat = new Cat();
+//		Animal dog = new Dog();
+//		Human human = new Human();
+//		human.sale(cat);
+//		human.sale(dog);
+
+		//《动态分配》
+		// 方法的调用是根据对象的真实类型,下面调用的eat方法为Cat类的eat方法
+		//《方法接收者》
+		// 一个方法所属的对象叫做方法的接收者
+		// 下面的 animal 对象就是 eat 方法的接收者
+//		Animal animal = new Cat();
+//		System.out.println(animal);
+//		animal.eat();
+
+		//《宗量》
+		// 方法的接收者与方法的参数统称为方法的宗量
+		//《单分配与多分配》
+		// 单分派语言根据一个宗量的类型进行对方法的选择
+		// 多分派语言根据多于一个的宗量的类型对方法进行选择
+		// Java为动态单分派、静态多分派语言
+		//《双重分派》
+		// 一个方法根据两个宗量的类型来决定执行不同的代码，这就是双重分派
+		//  Visitable(accept方法) ---------> Visitor(visit方法)
+		// 								   |
+		// 	Visitable(print方法)  <---------
+		Visitor visitor = new VisitorImplA();
+		Visitable visitableA = new VisitableImplA();
+		Visitable visitableB = new VisitableImplB();
+		visitableA.accept(visitor);
+		visitableB.accept(visitor);

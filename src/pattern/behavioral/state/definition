@@ -1,1 +1,10 @@
 状态模式
+概念：　状态模式允许一个对象在其内部状态改变的时候改变其行为。
+适用场景：用于解决系统中复杂对象的状态转换以及不同状态下行为的封装问题。
+
+-- code --
+        StateA stateA = new StateA();
+        StateManager manager = new StateManager(stateA);
+        manager.action();
+        manager.changeState(1);
+        manager.action();

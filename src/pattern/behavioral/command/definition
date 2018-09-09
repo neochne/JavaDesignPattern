@@ -1,1 +1,14 @@
 命令模式
+概念：把一个操作封装到一个对象中
+其实，命令模式只需要一个命令实现类就可以完成，为什么还需要这么多角色来完成？
+为了低耦合、高扩展，仔细想想，这不正是使用设计模式的目的吗？
+
+-- code --
+        // 执行方式1
+        CommandReceiver receiver = new CommandReceiver();
+        Command command = new CommandImp(receiver);
+        command.execute();
+
+        // 执行方式2
+        Invoker invoker = new Invoker(command);
+        invoker.action();

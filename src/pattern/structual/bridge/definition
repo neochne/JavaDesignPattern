@@ -1,1 +1,22 @@
 桥接模式
+概念：将抽象（abstraction）与实现（implemention）分离开来实现解耦，从而保持各部分的独立变化。桥接模式关注抽象的设计。即将两个抽象以不
+     同方式组合在一起，例如：汽车 与 发动机，发动机有很多具体型号的发动机，汽车也有很多具体牌子的汽车，它们之间有很多组合，但不影响它
+     们之间各自的变化。
+
+1、将抽象和实现解耦（分离），从而可以保持各部分的独立变化
+2、实现系统多维度分类
+3、抽象角色引用实现角色
+4、桥梁模式的意图是对变化的封装，尽量把可能变化的因素封装到最细、最小的逻辑单元中，避免风险扩散
+5、类的继承如果有N层时，可以考虑用桥梁模式
+
+-- code --
+		// 定义一个实现化角色
+		Implementor implementor1 = new ConcreteImplementor1();
+		Implementor implementor2 = new ConcreteImplementor2();
+
+		// 定义一个抽象化角色
+		Abstraction abstraction1 = new RefinedAbstraction(implementor1);
+		Abstraction abstraction2 = new RefinedAbstraction(implementor2);
+
+		abstraction1.toDo();
+		abstraction2.toDo();

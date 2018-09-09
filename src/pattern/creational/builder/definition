@@ -1,1 +1,16 @@
 建造者模式
+概念：建造者模式就是一步一步的创建一个复杂的对象，而且允许用户指定复杂对象的类型和内容
+
+-- code --
+		// 内部建造
+		Usr usr = new Usr.Builder().setName("Sharp")
+								   .setGender("Male")
+								   .setWeight(62)
+								   .build();
+		System.out.println(usr.getName());
+
+		// 外部建造
+		IBuilder i6Builder = new I6Builder();
+		new Director(i6Builder).construct();
+		Phone phone = i6Builder.build();
+		System.out.println(phone.getName());

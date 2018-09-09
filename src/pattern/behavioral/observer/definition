@@ -1,1 +1,34 @@
-观察者模式
+观察者模式（发布-订阅(Publish/Subscribe)模式、模型-视图(Model/View)模式、源-监听器(Source/Listener)模式、从属者(Dependents)模式）
+概念：定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。
+这个主题对象在状态上发生变化时，会通知所有观察者对象，使它们能够自动更新自己。
+适用场景：一个对象状态改变给其他对象通知的问题，而且要考虑到易用和低耦合，保证高度的协作
+
+-- code --
+
+        // 自定义的观察都对象
+        Button button = new Button();
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(Button btn) {
+                System.out.println("Button is clicked " +btn);
+            }
+        });
+
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(Button btn) {
+                System.out.println("Button is clicked " +btn);
+            }
+        });
+        button.click();
+
+		// 如果使用 Java 内置的对观察者模式的支持，需要自定义一个 java.util.Observable 的子类然后先调用其 setChanged( ) 方法
+		Observable observable = new MyObservable();
+		observable.addObserver(new Observer() {
+
+			@Override
+			public void update(Observable o, Object arg) {
+				System.out.println(arg);
+			}
+		});
+		observable.notifyObservers("Hello java.util.Observable");

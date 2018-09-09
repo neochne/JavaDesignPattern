@@ -1,1 +1,19 @@
 迭代器模式
+概念：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。在 Java 中使用较多
+
+-- code --
+        MyContainer aMyContainer = new AMyContainer();
+        MyContainer bMyContainer = new BMyContainer();
+
+        aMyContainer.add(1);
+        aMyContainer.add(2);
+        aMyContainer.add(3);
+        aMyContainer.add(4);
+
+        bMyContainer.add(1);
+        bMyContainer.add(2);
+        bMyContainer.add(3);
+        bMyContainer.add(4);
+
+        System.out.println(aMyContainer.iterate().next());
+        System.out.println(bMyContainer.iterate().next());

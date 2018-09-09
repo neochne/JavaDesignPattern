@@ -1,1 +1,19 @@
 单例模式
+
+-- code --
+        for (int i = 0;i < 200;i ++) {
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    EagerSingleton.getInstance().print();
+                    LazySingleton.getInstance().print();
+                    DoubleCheckedSingleton.getInstance().print();
+                    StaticInnerClassSingleton.getInstance().print();
+                    EnumSingleton.SIGLETON.print();
+
+                }
+            }).start();
+
+        }

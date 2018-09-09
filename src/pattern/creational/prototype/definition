@@ -1,1 +1,19 @@
 原型模式
+概念：通过复制一个现有的对象来生成新的对象，而不是通过实例化的方式。
+
+1. 因为 Object 类的 clone 方法是一个本地方法，所以使用原型模式创建对象比直接 new 一个对象在性能上要好的多，特别是大对象时。
+   所以在重复地创建相似对象时可以考虑用原型模式。
+2. 用 clone 方法创建出来的对象为一个新的对象。
+
+-- code --
+		// 重复创建相似对象，
+		List<UsrInfoBean> bs = new ArrayList<>();
+		UsrInfoBean b = new UsrInfoBean();
+
+		for (int i = 0; i < 20; i++) {
+			UsrInfoBean cb = b.clone();
+			System.out.println(cb);
+			cb.setName("name"+i);
+			bs.add(cb);
+		}
+		System.out.println(bs.get(6).getName());
