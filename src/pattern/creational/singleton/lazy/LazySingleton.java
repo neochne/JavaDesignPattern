@@ -10,12 +10,17 @@ public final class LazySingleton {
     private LazySingleton(){}
 
     public static LazySingleton getInstance(){
-
         if (singleton == null){
             singleton = new LazySingleton();
         }
         return singleton;
+    }
 
+    public static synchronized LazySingleton getInstanceSafely() {
+        if (singleton == null){
+            singleton = new LazySingleton();
+        }
+        return singleton;
     }
 
     public void print(){
